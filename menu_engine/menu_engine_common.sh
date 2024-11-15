@@ -26,7 +26,29 @@ using() {
     echo "ERROR: using() requires a category name."
     exit 1
   fi
+
+  # In order to handle "colors" as a bit of a special case I'm allowing for any "using" to be overridden
+  # with a custom function.
+  # If you have a function called `_using_name()` then that gets called, otherwise the default `source`
+  # behaviour will be used.
+  _using_fn=_using_$1
+  if [[ $(type -t ${_using_fn}) == function ]]; then
+    ${_using_fn}
+    return
+  fi
+
   source $(_category_file ${1})
+}
+
+_using_colors() {
+  # if _colors.sh exists in the ${ME_CATEGORY_DIR} folder, use it.
+  # otherwise assume it is in  `${_me_root_dir}/..`
+  if [ -e ${ME_CATEGORY_DIR}/_colors.sh ]; then
+    source ${ME_CATEGORY_DIR}/_colors.sh
+    return
+  fi
+
+  source ${_me_root_dir}/../colors.sh
 }
 
 run_handler_usage() {
