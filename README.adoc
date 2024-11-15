@@ -1,0 +1,29 @@
+= Bash tools
+
+Some simple tools that I find handy for writing bash scripts
+
+== colors.sh
+
+Provides some useful colorizing functions that make it easy to
+decorate your script output.
+
+Include this into your scripts with `source \<path/to/colors.sh\>`
+
+Refer to the `colors.sh` file for more detailed explanation and examples.
+
+== menu_engine/
+
+Provides a simple mechanism for accessing subscripts by category which
+will auto-generate some help/usage output and run your functions in a
+controller manner via an intuitive command-line
+
+Include this into your scripts with `source \<path/to/menu_engine.sh>`
+
+* You can control where your subscripts are found by setting the value of
+  `ME_CATEGORY_DIR`.
+* Subscript file names must start with an underscore.
+
+Refer to the `menu_engine.sh` file for more detail
+
+To see this in action, run `test.sh`
+
