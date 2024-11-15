@@ -3,7 +3,7 @@
 
 # The intended use for this is to source this file from your script:
 #   ```
-#   source /where/this/script/lives/_script_common.sh
+#   source /where/this/script/lives/menu_engine_common.sh
 #   ```
 #
 # GLOBAL VARIABLES:
@@ -42,7 +42,7 @@ using() {
 
 _using_colors() {
   # if _colors.sh exists in the ${ME_CATEGORY_DIR} folder, use it.
-  # otherwise assume it is in  `${_me_root_dir}/..`
+  # otherwise assume it is in `${_me_root_dir}/..`
   if [ -e ${ME_CATEGORY_DIR}/_colors.sh ]; then
     source ${ME_CATEGORY_DIR}/_colors.sh
     return
@@ -108,11 +108,11 @@ _run_command() {
 }
 
 # load the menu engine after defining things it will need.  REQUIRES that the engine be in the same folder as this file.
-# You can avoid loading the engine scripts by setting ${_menu_engine} prior to sourcing _script_common.sh
+# You can avoid loading the engine scripts by setting ${ME_ENGINE} prior to sourcing _script_common.sh
 # e.g.
 # ```
 # _menu_engine=excluded
-# source /where/this/script/lives/_script_common.sh
+# source /where/this/script/lives/menu_engine_common.sh
 # ```
 [ -z "${ME_ENGINE}" ] && source ${_me_root_dir}/_menu_engine.sh
 

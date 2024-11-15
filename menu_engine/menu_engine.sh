@@ -2,7 +2,7 @@
 
 # The intended use for this is to source this file from your script:
 #   ```
-#   source /where/this/script/lives/_menu_engine.sh
+#   source /where/this/script/lives/menu_engine.sh
 #   ```
 #
 # Note that this script relies on menu_engine_common.sh and won't work without it.
