@@ -16,7 +16,7 @@ run_build() {
       echo "** build all the stuff!! **"
       ;;
     *)
-      error "unknown op $(color -bold op)"
+      error "unknown op $(color -bold ${_op})"
       exit 1
       ;;
   esac

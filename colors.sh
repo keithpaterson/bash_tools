@@ -147,17 +147,17 @@ color() {
     _color+="$c;"
   done
   local _msg="${_c_start}${_color%%;}${_c_end}${_text}${_c_reset}"
-  # echo "debug: msg = '${_msg}'"
-  echo -e "${_msg}"
+  # printf "debug: msg = '%s'\n" "${_msg}"
+  printf "${_msg}\n"
 }
 
 # Print "WARNING: $*" where 'WARNING' is in yellow
 warning() {
-  echo "$(color -bold -yellow WARNING): $*"
+  printf "$(color -bold -yellow WARNING): $*\n"
 }
 
 # Print "ERROR: $*", where 'ERROR' is red
 error() {
-  echo "$(color -bold -lt_red ERROR): $*"
+  printf "$(color -bold -lt_red ERROR): $*\n"
 }
 

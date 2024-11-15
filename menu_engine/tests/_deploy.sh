@@ -20,7 +20,7 @@ run_deploy() {
       echo "** deploy the ui and the service!! **"
       ;;
     *)
-      error "unknown op $(color -bold op)"
+      error "unknown op $(color -bold ${_op})"
       exit 1
       ;;
   esac
