@@ -111,7 +111,7 @@ _run_command() {
 # You can avoid loading the engine scripts by setting ${ME_ENGINE} prior to sourcing _script_common.sh
 # e.g.
 # ```
-# _menu_engine=excluded
+# ME_ENGINE=excluded
 # source /where/this/script/lives/menu_engine_common.sh
 # ```
 [ -z "${ME_ENGINE}" ] && source ${_me_root_dir}/_menu_engine.sh
