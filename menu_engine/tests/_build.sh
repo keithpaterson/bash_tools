@@ -9,6 +9,10 @@ run_build_usage() {
 run_build() {
   local _op=$1
   case ${_op} in
+    -h|--help)
+      run_handler_usage build
+      exit 1
+      ;;
     some)
       echo "** build some stuff!! **"
       ;;

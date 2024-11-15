@@ -10,6 +10,10 @@ run_deploy_usage() {
 run_deploy() {
   local _op=$1
   case ${_op} in
+    -h|--help)
+      run_handler_usage deploy
+      exit 1
+      ;;
     ui)
       echo "** deploy the ui!! **"
       ;;
