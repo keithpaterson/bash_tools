@@ -72,6 +72,17 @@ _category_file() {
 # $1: the command plus arguments
 # $*: parameters to pass to the command 
 #
+# Error Handling:
+#   '_run' may fail if it cannot locate a category file.
+#   By default this emits an error message and exits, but you can provide an error handler function
+#   `_runerr_no_such_file()' to provide some other behaviour, for example:
+#     _runerr_no_such_file() {
+#       using general
+#       _run_command general $*
+#     }
+# ==> this will try to load the "general" category file and run the command from there.
+#     if the '_general.sh' file is missing then the call to 'using' will fail
+#
 # Examples:
 #   _run clean                => source '_general.sh" and calls "run_general clean"
 #   _run build ci             => source '_build.sh' and calls "run_build ci"
@@ -84,8 +95,12 @@ _run() {
     local _category=$1
     local _file=$(_category_file ${_category})
     if [ ! -f ${_file} ]; then
-      _category=general
-      _cmd="general ${_cmd}"
+      if [[ $(type -t _runerr_no_such_file) == function ]]; then
+        _runerr_no_such_file $_cmd $*
+      else
+        error "No such category '$(color -bold ${_category})': could not locate file '_${_category}'"
+        exit 1
+      fi
     fi
     using ${_category}
   fi
