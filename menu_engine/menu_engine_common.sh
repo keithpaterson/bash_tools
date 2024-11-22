@@ -96,7 +96,8 @@ _run() {
     local _file=$(_category_file ${_category})
     if [ ! -f ${_file} ]; then
       if [[ $(type -t _runerr_no_such_file) == function ]]; then
-        _runerr_no_such_file $_cmd $*
+        _runerr_no_such_file $*
+        return
       else
         error "No such category '$(color -bold ${_category})': could not locate file '_${_category}'"
         exit 1
